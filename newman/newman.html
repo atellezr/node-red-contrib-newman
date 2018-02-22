@@ -1,0 +1,89 @@
+<!-- more info: https://nodered.org/docs/creating-nodes/node-html -->
+
+<script type="text/javascript">
+  RED.nodes.registerType('newman',{
+    category: 'QA',
+    color: '#f15a24',
+    defaults: {
+        name: {
+          value: "",
+          required: false
+        },
+        options: {
+          value: JSON.stringify(JSON.parse('{"collection":"url_or_path_to_postman_collection","reporters":["cli","json"],"insecure":true}'), null, 2),
+          required: false
+        }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "postman_favicon.ico",
+    label: function() {
+        return this.name || "newman";
+    },
+    paletteLabel: "Postman newman",
+    labelStyle: function() {
+      return this.name ? "node_label_italic" : "";
+    },
+    inputLabels: "Input for starting the newman run",
+    outputLabels: [ "Reporter output from newman" ],
+    // a bit help from: https://github.com/node-red/node-red/blob/master/nodes/core/core/80-template.html
+    oneditprepare: function() {
+      this.editor = RED.editor.createEditor({
+        id: 'node-input-options-editor',
+        mode: 'ace/mode/html',
+        value: $("#node-input-options").val()
+      });
+      RED.library.create({
+        url:"functions", // where to get the data from
+        type:"function", // the type of object the library is for
+        editor:that.editor, // the field name the main text body goes to
+        fields:['name','outputs']
+      });
+      this.editor.focus();
+    },
+    oneditsave: function() {
+      $("#node-input-options").val(this.editor.getValue());
+      this.editor.destroy();
+      delete this.editor;
+    },
+    oneditcancel: function() {
+      this.editor.destroy();
+      delete this.editor;
+    },
+    oneditresize: function(size) {
+      var rows = $("#dialog-form>div:not(.node-text-editor-row)");
+      var height = $("#dialog-form").height();
+      for (var i=0; i<rows.size(); i++) {
+        height -= $(rows[i]).outerHeight(true);
+      }
+      var editorRow = $("#dialog-form>div.node-text-editor-row");
+      height -= (parseInt(editorRow.css("marginTop"))+parseInt(editorRow.css("marginBottom")));
+      $(".node-text-editor").css("height",height+"px");
+      this.editor.resize();
+    }
+
+  });
+</script>
+
+
+<script type="text/x-red" data-template-name="newman">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+
+  <div class="form-row node-text-editor-row">
+    <input type="hidden" id="node-input-options" autofocus="autofocus">
+    <label for="node-input-options-editor"><i class="icon-template"></i> Options</label>
+  </div>
+
+  <div class="form-row node-text-editor-row">
+    <div style="height: 250px; min-height:150px;" class="node-text-editor" id="node-input-options-editor" ></div>
+  </div>
+</script>
+
+
+<script type="text/x-red" data-help-name="newman">
+  <p>A wrapper for the lovely Postman Newman tool (<a href="https://github.com/postmanlabs/newman">https://github.com/postmanlabs/newman</a>)</p>
+  <p>Here it is possible to set only the parameters for the collection and for the reporters, but this is just </p>
+</script>

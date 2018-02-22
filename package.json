@@ -1,0 +1,35 @@
+{
+  "name": "node-red-contrib-newman",
+  "version": "0.0.1",
+  "description": "Newman integration in Node-RED",
+  "dependencies": {
+    "newman": "^3.9.0",
+    "mustache": "^2.3.0"
+  },
+  "devDependencies": {},
+  "license": "Apache License 2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atellezr/node-red-contrib-newman.git"
+  },
+  "keywords": [
+    "node-red",
+    "node-red-contrib",
+    "postman",
+    "newman"
+  ],
+  "node-red": {
+    "nodes": {
+      "newman": "newman/newman.js"
+    }
+  },
+  "author": {
+    "name": "Álvaro Téllez",
+    "email": "atellezro@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Álvaro Téllez"
+    }
+  ]
+}
