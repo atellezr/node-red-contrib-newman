@@ -84,6 +84,36 @@
 
 
 <script type="text/x-red" data-help-name="newman">
-  <p>A wrapper for the lovely Postman Newman tool (<a href="https://github.com/postmanlabs/newman">https://github.com/postmanlabs/newman</a>)</p>
-  <p>Here it is possible to set only the parameters for the collection and for the reporters, but this is just </p>
+  <p>A wrapper for the lovely <a href="https://github.com/postmanlabs/newman">Postman Newman tool</a>.</p>
+  <h3>Inputs</h3>
+    <dl class="message-properties">
+      <dt class="optional">options <span class="property-type">object</span></dt>
+      <dd> you can define in this configuration field in the node the options you want to use. The text entered here will be rendered with mustache, so can set variables references that will be evaluated when entering in the node.</dd>
+
+      <dt class="optional">msg.newman <span class="property-type">object</span></dt>
+      <dd> You have also the possibility of defining this object with the options that you want. In the execution the final options object will be formed by the options entered in the node configuration and being complemented with the options defined in this object. In case that an option is defined in both places, it will be taken into account the value defined here.</dd>
+    </dl>
+
+  <h3>Outputs</h3>
+    <ol class="node-ports">
+      <li>Standard output
+        <dl class="message-properties">
+          <dt>payload <span class="property-type">object</span></dt>
+          <dd>object formed by the following data:
+            <ul>
+              <li><code>execution_id</code>: an unique ID for identifying the execution. This is thought for cases automated executions, in order to making easier the identification of the execution we have done</li>
+              <li><code>isCorrectNewmanExecution</code>: flag for knowing whether newman finished successfully or not</li>
+              <li><code>duration</code>: the time newman took for execution everything</li>
+              <li><code>error</code>: for the case that there were an error in the newman execution. If everything went well, it will be <em>null</em></li>
+              <li><code>summary</code>: the summary of the newman execution, including the collection executions, test, etc.</li>
+            </ul>
+          </dd>
+        </dl>
+      </li>
+    </ol>
+
+  <h3>References</h3>
+    <ul>
+      <li><a href="https://github.com/postmanlabs/newman#newmanrunoptions-object--callback-function--run-eventemitter">Available newman options</a>. Any of these options can be defined and used in this node</li>
+    </ul>
 </script>
