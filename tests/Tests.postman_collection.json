@@ -1,0 +1,89 @@
+{
+	"info": {
+		"name": "Tests",
+		"_postman_id": "5a1a1cbd-82cb-f090-c814-4823b321559a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://duckduckgo.com",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b5d19130-6a26-4d14-ac18-0fd2e505ed60",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://duckduckgo.com/",
+					"protocol": "https",
+					"host": [
+						"duckduckgo",
+						"com"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "https://www.worldwildlife.org/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fd48dd0b-8fb9-48aa-a9b4-427f3c9c1d5b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://www.worldwildlife.org/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"worldwildlife",
+						"org"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}
