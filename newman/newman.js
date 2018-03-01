@@ -29,7 +29,7 @@ module.exports = function(RED) {
     var node = this;
 
     node.on('input', function(msg) {
-      node.status({ fill:"blue", shape:"dot", text:"runnning..."});
+      node.status({ fill:"grey", shape:"dot", text:"preparing run"});
 
       let newmanID = RED.util.generateId();
 
@@ -40,10 +40,14 @@ module.exports = function(RED) {
       let startTime = process.hrtime();
 
       try {
-        newman.run(newmanOptions)
+        let run = newman.run(newmanOptions)
         .on('start', function (err, args) {
+          node.status({ fill:"blue", shape:"dot", text:"starting the collection run"});
           newmanOptions.execution_id = newmanID;
           node.metric("newman.starts", newmanOptions);
+  			})
+        .on('beforeItem', function (err, args) {
+          node.status({ fill:"blue", shape:"dot", text:`starting item ${args.item.name}`});
   			})
         .on('done', function (err, summary) {
           let duration = process.hrtime(startTime);
@@ -72,7 +76,20 @@ module.exports = function(RED) {
           }
 
           node.status({});
-          node.send(msg);
+          node.send([msg, null]);
+        });
+
+        const EVENTS = ["beforeIteration", "beforeItem", "beforePrerequest", "prerequest", "beforeRequest", "request", "beforeTest", "test", "beforeScript", "script", "item", "iteration", "assertion", "console", "exception", "beforeDone"];
+        EVENTS.forEach(function(event){
+          run.on(event, function (err, args) {
+            msg.payload = {
+              "execution_id": newmanID,
+              "event": event,
+              "args": args,
+              "error": err
+            };
+            node.send([null, msg]);
+    			})
         });
       }
       catch(e) {
