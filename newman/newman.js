@@ -47,7 +47,9 @@ module.exports = function(RED) {
           node.metric("newman.starts", newmanOptions);
   			})
         .on('beforeItem', function (err, args) {
-          node.status({ fill:"blue", shape:"dot", text:`starting item ${args.item.name}`});
+          let txt = `starting item ${args.item.name}`;
+          node.status({ fill:"blue", shape:"dot", text:txt});
+          node.log(`Newman run ${newmanID}: ${txt}`);
   			})
         .on('done', function (err, summary) {
           let duration = process.hrtime(startTime);
