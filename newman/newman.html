@@ -15,7 +15,7 @@
         }
     },
     inputs: 1,
-    outputs: 1,
+    outputs: 2,
     icon: "postman_favicon.ico",
     label: function() {
         return this.name || "newman";
@@ -25,7 +25,7 @@
       return this.name ? "node_label_italic" : "";
     },
     inputLabels: "Input for starting the newman run",
-    outputLabels: [ "Reporter output from newman" ],
+    outputLabels: [ "Reporter output from newman", "Output for every event raised during the run" ],
     // a bit help from: https://github.com/node-red/node-red/blob/master/nodes/core/core/80-template.html
     oneditprepare: function() {
       this.editor = RED.editor.createEditor({
