@@ -22,6 +22,7 @@ module.exports = function(RED) {
     this.msgContext = new mustache.Context(msg, parent);
     this.nodeContext = nodeContext;
     this.escapeStrings = escapeStrings;
+    return { msg };
   }
 
   function NewmanNode(config) {
