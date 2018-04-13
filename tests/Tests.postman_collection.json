@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "425d983b-2002-4a7e-a7eb-cd128301ba31",
+						"id": "eb9f5736-c36f-44c8-a29e-5ca82fce9827",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Response time is less than 300ms\", function () {",
@@ -22,7 +22,8 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"console.log(`End script worldwildlife`);",
+							"console.log(`End script duckduckgo`);",
+							"console.warn(`This is a warning message`);",
 							""
 						]
 					}
@@ -82,10 +83,11 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "50185e52-5300-401e-95f8-93a94882aa19",
+						"id": "c9bbbc06-9f1c-4eaa-97d9-d9a9bb705810",
 						"type": "text/javascript",
 						"exec": [
 							"console.log(`Pre-request worldwildlife`);",
+							"console.error(`This is an error message`);",
 							""
 						]
 					}
