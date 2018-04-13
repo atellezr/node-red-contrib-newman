@@ -1,8 +1,7 @@
 {
 	"info": {
-		"name": "Tests",
 		"_postman_id": "5a1a1cbd-82cb-f090-c814-4823b321559a",
-		"description": "",
+		"name": "Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -12,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "b5d19130-6a26-4d14-ac18-0fd2e505ed60",
+						"id": "425d983b-2002-4a7e-a7eb-cd128301ba31",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Response time is less than 300ms\", function () {",
@@ -21,7 +20,21 @@
 							"",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
-							"});"
+							"});",
+							"",
+							"console.log(`End script worldwildlife`);",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9514a58c-621b-47ca-abdb-408b8e33a866",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(`Pre-request duckduckgo`);",
+							""
 						]
 					}
 				}
@@ -40,8 +53,7 @@
 					"path": [
 						""
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		},
@@ -51,7 +63,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fd48dd0b-8fb9-48aa-a9b4-427f3c9c1d5b",
+						"id": "e035152e-0131-4f2b-84ed-cacb2600cb5c",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Response time is less than 300ms\", function () {",
@@ -60,7 +72,21 @@
 							"",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
-							"});"
+							"});",
+							"",
+							"console.log(`End script worldwildlife`);",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "50185e52-5300-401e-95f8-93a94882aa19",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(`Pre-request worldwildlife`);",
+							""
 						]
 					}
 				}
@@ -80,8 +106,7 @@
 					"path": [
 						""
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		}
