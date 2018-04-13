@@ -34,7 +34,8 @@ module.exports = function(RED) {
       let newmanID = RED.util.generateId();
 
       msg.newman = parse2json(msg.newman);
-      let options = parse2json(mustache.render(config.options, new NodeContext(msg, node.context(), null, true)));
+      //let options = parse2json(mustache.render(config.options, new NodeContext(msg, node.context(), null, true)));
+      let options = parse2json(mustache.render(config.options, msg));
       let newmanOptions = Object.assign({}, options, msg.newman);
 
       let startTime = process.hrtime();
