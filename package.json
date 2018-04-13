@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-newman",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Newman integration in Node-RED",
   "dependencies": {
     "newman": "^3.9.0",
