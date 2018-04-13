@@ -52,6 +52,12 @@ module.exports = function(RED) {
           node.status({ fill:"blue", shape:"dot", text:txt});
           node.log(`Newman run ${newmanID}: ${txt}`);
   			})
+        .on('console', function (err, args) {
+          const logger = node[args.level] ? node[args.level] : node.log;
+          args.messages.forEach(function(message){
+            logger(message);
+          });
+  			})
         .on('done', function (err, summary) {
           let duration = process.hrtime(startTime);
           duration = duration[0] * 1e3 + duration[1] * 1e-6;
