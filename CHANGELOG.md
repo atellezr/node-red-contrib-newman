@@ -1,3 +1,8 @@
+#### 0.0.3: Fix issue
+
+ - fix #1 by changing the context to the Mustache render
+ - writting the console traces in the scripts to the log
+
 #### 0.0.2: Added events
 
  - added new output to the node from where the events will be sent
