@@ -1,3 +1,8 @@
+#### 0.0.4: Upgrade Newman version and dependencies
+
+-  Upgrade Newman version to 4.1.0
+-  Upgrade Mustache version to 3.0.0
+
 #### 0.0.3: Fix issue
 
  - fix #1 by changing the context to the Mustache render
